@@ -1,4 +1,5 @@
 (ns domina
+  (:refer-clojure :exclude [clone])
   (:require
    [goog.dom :as dom]
             [goog.dom.xml :as xml]
