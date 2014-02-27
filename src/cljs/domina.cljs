@@ -12,6 +12,8 @@
             [domina.support :as support])
   (:require-macros [domina.macros :as dm]))
 
+(def body (.-body (goog.dom/getDocument)))
+
 ;;;;;;;;;;;;;;;;;;; Parse HTML to DOM ;;
 
 (def re-html #"<|&#?\w+;")
@@ -128,6 +130,14 @@
   [class-name]
   (normalize-seq (dom/getElementsByClass (core/name class-name))))
 
+(defn find-node
+  [content pred]
+  (dom/findNode content pred))
+
+(defn find-nodes
+  [content pred]
+  (dom/findNodes content pred))
+
 (defn children
   "Gets all the child nodes of the elements in a content. Same as (xpath content '*') but more efficient."
   [content]
@@ -216,7 +226,9 @@
 (defn attr
   "Gets the value of an HTML attribute. Assumes content will be a single node. Name may be a stirng or keyword. Returns nil if there is no value set for the style."
   [content name]
-  (.getAttribute (single-node content) (core/name name)))
+  (try
+    (.getAttribute (single-node content) (core/name name))
+    (catch js/Object e nil)))
 
 (defn set-style!
   "Sets the value of a CSS property for each node in the content. Name may be a string or keyword. Value will be cast to a string, multiple values wil be concatenated."

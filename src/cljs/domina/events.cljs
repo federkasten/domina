@@ -145,3 +145,7 @@ content of a given type."
   [content type]
   (let [type (name type)]
     (mapcat #(events/getListeners % type false) (domina/nodes content))))
+
+(defn has-listener?
+  [content type]
+  (goog.events/hasListener content (name type)))
