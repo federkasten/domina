@@ -139,6 +139,10 @@
   [content pred]
   (dom/findNodes content pred))
 
+(defn- is-tag?
+  [c tag]
+  (= (.toUpperCase tag) (.-tagName c)))
+
 (defn children
   "Gets all the child nodes of the elements in a content. Same as (xpath content '*') but more efficient."
   [content]
