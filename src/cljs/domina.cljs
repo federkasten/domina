@@ -370,6 +370,11 @@
   [content]
   (forms/getValue (single-node content)))
 
+(defn value-by-name
+  ""
+  [content name]
+  (forms/getValueByName (single-node content) name))
+
 (defn set-value!
   "Sets the value of all the nodes (presumably form fields) in the given content."
   [content value]
