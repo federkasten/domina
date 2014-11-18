@@ -1,4 +1,4 @@
-(defproject domina "1.0.3-SNAPSHOT"
+(defproject domina "1.0.9999-federkasten-fork-SNAPSHOT"
   :description "A DOM manipulation library for ClojureScript inspired by JQuery"
   :source-paths ["src/clj" "src/cljs"]
   :dependencies [[org.clojure/clojure "1.5.1"]
